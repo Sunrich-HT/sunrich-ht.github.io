@@ -1,0 +1,262 @@
+---
+---
+
+/*
+ *    Minimal Mistakes Jekyll Theme
+ *
+ *  - Michael Rose
+ *  - mademistakes.com
+ *  - https://twitter.com/mmistakes
+ *
+*/
+
+@import "vendor/breakpoint/breakpoint"; // media query mixins
+@import "variables";
+@import "mixins";
+@import "vendor/susy/susy";
+
+@import "reset";
+@import "base";
+
+@import "utilities";
+@import "animations";
+@import "tables";
+@import "buttons";
+@import "notices";
+@import "masthead";
+@import "navigation";
+@import "footer";
+@import "syntax";
+
+@import "forms";
+
+@import "page";
+@import "archive";
+@import "sidebar";
+
+@import "vendor/font-awesome/fontawesome";
+@import "vendor/font-awesome/solid";
+@import "vendor/font-awesome/brands";
+@import "vendor/magnific-popup/magnific-popup";
+@import "print";
+
+.paper-box {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-bottom: 1px #efefef solid;
+    padding: 2em 0 2em 0;
+    
+
+    .paper-box-image{
+        justify-content: center;
+        display: flex;
+        width: 100%;
+        order: 2;
+        img {
+            max-width: 400px;
+            box-shadow: 3px 3px 6px #888;
+            object-fit: cover;
+        }
+    }
+    
+    .paper-box-text{
+        max-width: 100%;
+        order: 1;
+    }
+    
+    @include breakpoint($medium) {
+        .paper-box-image{
+            justify-content: left;
+            min-width: 200px;
+            max-width: 40%;
+            order: 1;
+        }
+        
+        .paper-box-text{
+            justify-content: left;
+            padding-left: 2em;
+            max-width: 60%;
+            order: 2;
+        }
+
+    }
+
+
+}
+
+$scroll_offset : 2em;
+h1:before, .anchor:before { 
+    content: ''; 
+    display: block; 
+    position: relative; 
+    width: 0; 
+    height: $scroll_offset; 
+    margin-top: -$scroll_offset;
+}
+
+.badge {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    position: absolute;
+    margin-top: .5em;
+    margin-left: -.5em;
+    color: white;
+    background-color: #00369f;
+    font-size: .8em;
+}
+/* ---------- customizations (Fang Wu–style sections) ---------- */
+/* fixed, centered figure frame so tall/wide figures look uniform */
+.paper-box .paper-box-image > div {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 250px;
+    background: #fff;
+    box-shadow: 3px 3px 6px #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.paper-box .paper-box-image > div .badge { top: 0; left: 0; margin: 0; z-index: 1; }
+.paper-box .paper-box-image img {
+    box-shadow: none !important;
+    width: auto !important;
+    max-width: 96%;
+    max-height: 94%;
+    object-fit: contain;
+}
+.paper-box { align-items: center; }
+.paper-box .paper-box-text p { margin: 0.35em 0; }
+
+ul.intro-links {
+    list-style: none;
+    margin: 0.8em 0 0 0;
+    padding: 0;
+    li { margin: 0.35em 0; color: #494e52; }
+    i { margin-right: 0.35em; }
+    a { color: #494e52; }
+}
+
+ul.news-list {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0.2em;
+    li {
+        margin: 0.35em 0;
+        color: #d1242f;
+        font-weight: 500;
+    }
+    li img.new-icon {
+        width: 34px;
+        vertical-align: middle;
+        margin-right: 0.5em;
+    }
+    em { color: #4169e1; }
+}
+
+.pub-legend { font-size: 0.9em; color: #444; margin: 0.2em 0 0.4em 0.2em; }
+
+.svc-line { line-height: 2.4; }
+.svc-chip {
+    display: inline-block;
+    padding: 0.05em 0.6em;
+    margin: 0.15em 0.1em;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9em;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #ff9a76 0%, #ff6b6b 100%);
+    box-shadow: 0 2px 5px rgba(255, 107, 107, 0.35);
+}
+
+.logo-row {
+    display: flex;
+    align-items: center;
+    margin: 1.4em 0 1.4em 0.5em;
+    .logo-cell {
+        flex: 0 0 90px;
+        display: flex;
+        justify-content: center;
+        img { max-width: 80px; max-height: 80px; object-fit: contain; }
+    }
+    .logo-text {
+        padding-left: 0;
+        line-height: 1.6;
+        .org { font-weight: 600; font-size: 1.05em; }
+        .years { color: #6b7280; letter-spacing: 0.06em; font-weight: 600; font-size: 0.9em; }
+    }
+}
+
+/* ---------- full-width page without sidebar + Fang Wu–style intro ---------- */
+.page {
+  @include breakpoint($large) {
+    width: 100%;
+    max-width: 1150px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    float: none;
+  }
+}
+.intro {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5em;
+  margin-top: 0.5em;
+  .intro-text { flex: 1 1 auto; min-width: 0; }
+  .intro-photo {
+    flex: 0 0 200px;
+    margin-top: 4.2em;
+    img { width: 200px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+  }
+  h1.hi {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 2.1em;
+    border-bottom: none;
+    margin: 0.3em 0 0.6em 0;
+    padding-bottom: 0;
+  }
+  .intro-text a { text-decoration: none; }
+  @media (max-width: 760px) {
+    flex-direction: column-reverse;
+    .intro-photo { margin-top: 0; flex-basis: auto; img { width: 160px; } }
+  }
+}
+
+.pub-title { font-weight: 600; font-size: 1.02em; margin-bottom: 0.2em !important; }
+.pub-links a { text-decoration: none; color: #2f5d9e; }
+.pub-links a:hover { text-decoration: underline; }
+
+.site-footer {
+    margin: 4em 0 3em 0;
+    padding-top: 1.4em;
+    border-top: 1px solid #eaeaea;
+    a {
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        font-weight: 700;
+        font-size: 0.8em;
+        color: #2f5d9e;
+        text-decoration: none;
+        margin-right: 2.2em;
+    }
+}
+
+.pinned {
+    display: inline-block;
+    margin: 0.4em 0 0.9em 0;
+    padding: 0.55em 1.1em;
+    background: #eef5ff;
+    border: 1px solid #c9dcf7;
+    border-left: 5px solid #2f80ed;
+    border-radius: 8px;
+    color: #1a5fd0;
+    font-weight: 700;
+    box-shadow: 0 2px 6px rgba(47, 128, 237, 0.12);
+}
